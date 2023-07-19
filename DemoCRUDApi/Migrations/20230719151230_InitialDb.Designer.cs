@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoCRUDApi.Migrations
 {
     [DbContext(typeof(DemoDBContext))]
-    [Migration("20230718155902_InitialDb")]
+    [Migration("20230719151230_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -24,13 +24,10 @@ namespace DemoCRUDApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DemoCRUDApi.Model.DemoTable", b =>
+            modelBuilder.Entity("DemoCRUDApi.Model.CrudDemo", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DemoName")
                         .HasColumnType("nvarchar(max)");

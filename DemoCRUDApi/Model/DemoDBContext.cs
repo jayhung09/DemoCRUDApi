@@ -24,5 +24,10 @@ namespace DemoCRUDApi.Model
             var connectionString = configuration.GetConnectionString("DemoCRUDConnection");
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CrudDemo>().Property(c => c.Id).ValueGeneratedNever();
+        }
     }
 }

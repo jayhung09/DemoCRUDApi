@@ -21,13 +21,10 @@ namespace DemoCRUDApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DemoCRUDApi.Model.DemoTable", b =>
+            modelBuilder.Entity("DemoCRUDApi.Model.CrudDemo", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DemoName")
                         .HasColumnType("nvarchar(max)");
