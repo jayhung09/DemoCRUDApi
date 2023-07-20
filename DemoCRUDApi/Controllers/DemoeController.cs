@@ -65,7 +65,14 @@ namespace DemoCRUDApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(crudDemo).State = EntityState.Modified;
+            var findResult = await _context.CrudDemo.FindAsync(id);
+            if (findResult is null)
+            {
+                return NotFound();
+            }
+
+            findResult.DemoName = crudDemo.DemoName;
+            _context.SetModified(findResult);
 
             try
             {
@@ -73,14 +80,7 @@ namespace DemoCRUDApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CrudDemoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
