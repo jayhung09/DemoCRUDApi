@@ -29,5 +29,10 @@ namespace DemoCRUDApi.Model
         {
             modelBuilder.Entity<CrudDemo>().Property(c => c.Id).ValueGeneratedNever();
         }
+
+        public virtual void SetModified(object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
     }
 }
