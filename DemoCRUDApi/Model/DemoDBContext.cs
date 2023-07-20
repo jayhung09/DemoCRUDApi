@@ -12,7 +12,7 @@ namespace DemoCRUDApi.Model
         {
         }
 
-        public DbSet<CrudDemo> CrudDemo { get; set; }
+        public virtual DbSet<CrudDemo> CrudDemo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
